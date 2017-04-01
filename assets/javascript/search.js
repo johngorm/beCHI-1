@@ -156,4 +156,10 @@ function init() {
      handleAPILoaded();
   });
 };
- 
+
+if (localStorage.getItem("userId") === null) {
+  console.log("noID")
+  //...
+} else {
+  console.log("there is Id")
+ }
