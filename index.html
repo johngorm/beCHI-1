@@ -17,8 +17,6 @@
 </head>
 <body>
 
-  
-
   <div class="container-fluid">
     
     <div class="row">
@@ -41,7 +39,7 @@
 
     <!-- Form -->
     <div class="row"> 
-      <div class="col-lg-12 col-md-12 col-xs-12">
+      <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-xs-6 col-xs-offset-3">
         <form class="form-inline text-center" >
            <div class="form-group">
             <label for="userName">Username:</label>
@@ -51,27 +49,15 @@
             <label for="email">Email:</label>
             <input type="email"  class="form-control" id="email" required>
           </div>
-          <button type="submit" class="btn btn-default" onclick='firebaseAdd()'>Submit</button>
+          <button class="submit" type="submit" class="btn btn-default" onclick='firebaseAdd()'>Submit</button>
         </form>
       </div>
     </div>
 
-    <div class="row text-center topic-inputRow">
-    <form id="btnGen" onsubmit="return false">
-        <label for="topic-input"></label>
-        <br>
-        <input type="text" id="topic-input" autocomplete="off" required><br>
-
-        <!-- Button triggers new movie to be added -->
-        <input id="add-topic" type="submit" value="Add Filter" class="text-center btn btn-success">
-      </form>
-  </div>
-
-  <div id="#btnHolder">btn holder</div>
     <!-- Results -->
     <div class="row">
        <div class="col-lg-12 col-md-12 col-xs-12">
-        <div id="results" class="col-md-offset-1">
+        <div id="results">
           <div id="google-map" class="API-div col-md-5 col-xs-5"></div>
           <div id="search-container" class="API-div col-md-5 col-xs-5"></div>
         </div>
@@ -89,12 +75,28 @@
         <footer>
 
           <div id="neighborhoods" class="col-lg-12 col-md-12 col-xs-12 neigh-list" hidden></div>
+          
+          <div id="filters" class="col-lg-12 col-md-12 col-xs-12 filter-list" hidden>
+            <div class="row text-right topic-inputRow">
+              <form id="filterRow" onsubmit="return false">
+                <label for="topic-input"></label>
+                <input type="text" id="topic-input" class="filter" autocomplete="off" required>
+
+                <!-- Button triggers new movie to be added -->
+                <input id="add-topic" type="submit" value="Add Filter" class="text-center btn btn-success">
+              </form>
+            </div>
+            <div id="filterList"></div>
+          </div>
+
+          
+
           <div class="col-lg-3 col-md-3 col-xs-3">
             <div id="myLocation" class="btn btn-primary text-center glyphicon glyphicon-map-marker glyph"></div>
           </div>
 
           <div class="col-lg-3 col-md-3 col-xs-3">
-            <div onclick="dropdownList()" class="dropbtn btn btn-primary dropup text-center glyph glyphicon glyphicon-align-justify">
+            <div id="neighId" class="dropbtn btn btn-primary dropup text-center glyph glyphicon glyphicon-align-justify">
             </div>
           </div>
           
@@ -103,7 +105,7 @@
           </div>
 
           <div class="col-lg-3 col-md-3 col-xs-3">
-              <div class="btn btn-primary text-center glyphicon glyphicon-filter glyph"></div>
+              <div id="filter" class="dropbtn btn btn-primary dropup text-center glyphicon glyphicon-filter glyph"></div>
              <!--  <button class="test">test</button> -->
           </div>           
                

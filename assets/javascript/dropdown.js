@@ -81,77 +81,102 @@ var neighborhoodList = [
 var allFilters = [
 	"music",
 	"history",
-]
-    $("#add-topic").on("click", function(event) {
+	"interesting"
+];
+//     $("#add-topic").on("click", function(event) {
 
-    	if ($("#topic-input").val() !=="") {
+//     	if ($("#topic-input").val() !=="") {
           
-	        event.preventDefault();
-		    // This line grabs the input from the textbox
-		    var filter = $("#topic-input").val().trim();
+// 	        event.preventDefault();
+// 		    // This line grabs the input from the textbox
+// 		    var filter = $("#topic-input").val().trim();
 
-		    // Adding movie from the textbox to our array
-		    allFilters.push(filter);
-		    console.log(allFilters)
+// 		    // Adding movie from the textbox to our array
+// 		    allFilters.push(filter);
+// 		    console.log(allFilters)
 
-		    $("#topic-input").val("")
+// 		    $("#topic-input").val("")
 		    
- 		}
-    });	
+//  		}
+//     });	
 
 
-function createButtons (){
+// function createButtons (){
 
-    $("#btnHolder").empty();
+//     $("#btnHolder").empty();
 
-  	// Looping through the GIF topics
-  	for (var i=0; i<topics.length; i++) {
+//   	// Looping through the GIF topics
+//   	for (var i=0; i<topics.length; i++) {
 
-  		// Using jQuery to create a button for string in the "topics" array
-  		var $gifBtn = $('<button>');
-  		// Adding class "topic" to each button
-  		$gifBtn.attr("class", "topic btn btn-primary");
-  		// Adding attribute to distinguish one button from another
-  		$gifBtn.attr("topic-name", topics[i])
-  		// Putting "topic[i]" text inside the generated button
-  		$gifBtn.text(topics[i])
-  		// Add the button to the page within the "btnHolder"
-  		$("#btnHolder").append($gifBtn);
+//   		// Using jQuery to create a button for string in the "topics" array
+//   		var $gifBtn = $('<button>');
+//   		// Adding class "topic" to each button
+//   		$gifBtn.attr("class", "topic btn btn-primary");
+//   		// Adding attribute to distinguish one button from another
+//   		$gifBtn.attr("topic-name", topics[i])
+//   		// Putting "topic[i]" text inside the generated button
+//   		$gifBtn.text(topics[i])
+//   		// Add the button to the page within the "btnHolder"
+//   		$("#btnHolder").append($gifBtn);
 
-  		// Debugging
-  		console.log($gifBtn, "gif button");
+//   		// Debugging
+//   		console.log($gifBtn, "gif button");
 
-  	};
-  };
+//   	};
+//   };
 
 
 
 for (i=0; i<neighborhoodList.length; i++) {
 	var neighName = $("<button>");
-	neighName.attr("href", "#");
 	neighName.attr("value", neighborhoodList[i])
 	neighName.attr("class", "neighborhood btn btn-primary")
 	neighName.prepend(neighborhoodList[i]);
 
 	$("#neighborhoods").append(neighName);
+
+	console.log("neighName button", neighName)
+}
+
+for (j=0; j<allFilters.length; j++) {
+	var filter = $("<button>");
+	filter.attr("value", allFilters[j])
+	filter.attr("class", "filter btn btn-primary")
+	filter.prepend(allFilters[j]);
+
+	$("#filterList").append(filter);
+	console.log("filter button", filter)
 }
 	
 
-function dropdownList(){
+// function dropdownList(){
+
+// 	document.getElementById("neighborhoods").classList.toggle("show")
+// };
+
+$("#neighId").on('click', function() {
 
 	document.getElementById("neighborhoods").classList.toggle("show")
-};
+	console.log("neighhere")
+})
 
-window.onclick = function(event) {
-	if (!event.target.matches('.dropbtn')) {
-		var dropdowns = document.getElementsByClassName("neigh-list");
-		var i;
-		for (i=0; i<neighborhoods.length; i++) {
-			var openDropdown = neighborhoods[i];
-			if (openDropdown.classList.contains('show')) {
-				openDropdown.classList.remove('show');
-				
-			}
-		} 
-	}
-}
+$("#filter").on('click', function() {
+
+	document.getElementById("filters").classList.toggle("show")
+	console.log("filterhere")
+
+})
+
+	// window.onclick = function(event) {
+	// 	if (!event.target.matches('.dropbtn')) {
+	// 		var dropdowns = document.getElementsByClassName("neigh-list");
+	// 		var i;
+	// 		for (i=0; i<neighborhoods.length; i++) {
+	// 			var openDropdown = neighborhoods[i];
+	// 			if (openDropdown.classList.contains('show')) {
+	// 				openDropdown.classList.remove('show');
+					
+	// 			}
+	// 		} 
+	// 	}
+	// }

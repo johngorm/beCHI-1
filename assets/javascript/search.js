@@ -1,34 +1,71 @@
 // Initialize Firebase
-var neighArray = [];
-var config = {
-  apiKey: "AIzaSyDB3oO0W-easjAy-cE8qACAjaKOWUpbsbs",
-  authDomain: "chicago-neighborhoods.firebaseapp.com",
-  databaseURL: "https://chicago-neighborhoods.firebaseio.com",
-  storageBucket: "chicago-neighborhoods.appspot.com",
-  messagingSenderId: "101601892763"
-};
+    var neighArray = [];
+    var config = {
+      apiKey: "AIzaSyDB3oO0W-easjAy-cE8qACAjaKOWUpbsbs",
+      authDomain: "chicago-neighborhoods.firebaseapp.com",
+      databaseURL: "https://chicago-neighborhoods.firebaseio.com/",
+      storageBucket: "chicago-neighborhoods.appspot.com",
+      messagingSenderId: "101601892763"
+    };
 
-var ref;
+    var ref;
+    
+    firebase.initializeApp(config);
+    function firebaseAdd() {
+     
+      var database = firebase.database();
+      ref = database.ref();
+      var userRef;
+        if (!localStorage.getItem('userId')) {
+            //Add a new user to database
+            userRef = ref.push();
+            userRef.set({
+                neighborhoods: 'blank'
+            });
+            //When new user added, save their data in localStorage
+            ref.on('child_added', function(snapshot) {
+                localStorage.setItem('userId', snapshot.key);
+                localStorage.setItem('neighborhoods', JSON.stringify(snapshot.val()['neighborhoods']));
 
-firebase.initializeApp(config);
-function firebaseAdd() {
- 
-  var database = firebase.database();
-  ref = database.ref();
-  var userRef;
-    if (!localStorage.getItem('userId')) {
-        //Add a new user to database
-        userRef = ref.push();
-        userRef.set({
-            neighborhoods: 'blank',
-        });
-        //When new user added, save their data in localStorage
-        ref.on('child_added', function(snapshot) {
-            localStorage.setItem('userId', snapshot.key);
-            localStorage.setItem('neighborhoods', JSON.stringify(snapshot.val()['neighborhoods']));
-        });
-    }  
-}
+
+            });
+        }
+     
+    }
+    //make the selector the links in the dropdown menu
+    $('button.neighborhood').on('click', function() {
+        var flag = false;
+        var neighborhood = this.innerHTML;
+        localneigh = JSON.parse(localStorage.getItem('neighborhoods'));
+        console.log(localneigh);
+        if (localneigh !== 'blank' && localneigh) {
+            for (ii = 0; ii <= localneigh.length; ii++) {
+                if (localneigh[ii] === neighborhood) {
+                    flag = true; //set flag is neighborhood clicked is already in database array
+                    break;
+                }
+
+            }
+
+
+        }
+        if (flag === false) {
+            neighArray.push(neighborhood);
+            userRef = ref.child(localStorage.getItem('userId'));
+            userRef.set({
+                neighborhoods: neighArray
+            });
+
+
+
+            userRef.on('value', function(snapshot) {
+                localStorage.setItem('neighborhoods', JSON.stringify(snapshot.val()['neighborhoods']));
+            })
+        }
+      });
+
+// This is the search.js in the gh-pages branch
+
 
 function handleAPILoaded() {
   $('.neigh-list').attr('hidden', false);
@@ -83,7 +120,7 @@ $('.neigh-list').delegate('.neighborhood', 'click',function(e) {
 
 function search(searchTerm){
   $('#search-container').empty();
-  var val = 'Chicago ' + searchTerm;
+  var val = 'Chicago ' + searchTerm + "tour";
   var request = gapi.client.youtube.search.list({
     q: encodeURIComponent(val).replace(/%20/g, '+'),
     maxResults: maxVids,
@@ -127,5 +164,5 @@ if (localStorage.getItem("userId") === null) {
   //...
 } else {
   console.log("there is Id")
-  $("form").hide()
+  $(".form-inline").hide()
  }
