@@ -162,4 +162,5 @@ if (localStorage.getItem("userId") === null) {
   //...
 } else {
   console.log("there is Id")
+  $("form").hide()
  }
