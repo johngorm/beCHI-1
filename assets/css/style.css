@@ -41,6 +41,23 @@ body {
 
 .topic-inputRow {
     margin-right: 5px;
+
+}
+
+#topic-input {
+    height: 37px;
+}
+
+#add-topic {
+    color: #b3ddf2;
+    height: 37px;
+    margin-top:5px;
+    background-color: #f00;
+    border: none;
+    line-height: 10px;
+    font-size: 18px;
+
+    /* border-color: #4cae4c; */
 }
 
 /*Neighborhood Buttons*/
@@ -69,6 +86,7 @@ body {
     background-color: white;
 }
 
+
 .filter-list.col-xs-12 {
     /* overflow: scroll; */
     /* direction: ltr; */
@@ -90,6 +108,7 @@ body {
     border: none;
     font-size: 18px;
     float: right;
+    border-radius: 4px;
 }
 
 .btn-primary:hover {
@@ -227,6 +246,7 @@ body {
     top: 0;
 
 }
+
 
 
 
