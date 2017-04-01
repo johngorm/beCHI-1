@@ -79,7 +79,9 @@ var latlng = {};
               });
               
               var neighName = results[0].address_components[2].long_name;
-             
+              search(neighName);
+              console.log(neighName)
+              
               $(".neighName").html(neighName);
               // Setting the coordinates for the neighborhood boundary
               var neighBound = [
@@ -121,6 +123,8 @@ var latlng = {};
               
               // Attach image to map using imageBounds coordinates
               historicalOverlay.setMap(map);
+
+              
 
             } else {
               window.alert('No results found');

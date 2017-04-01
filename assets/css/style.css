@@ -39,6 +39,8 @@ body {
     display: block;
 }
 
+
+
 .topic-inputRow {
     margin-right: 5px;
 
@@ -226,10 +228,11 @@ body {
 #google-map {
     height: 500px;
     margin: 20px;
+    background-color: #b3ddf2;
 }
 
 #search-container {
-    background-color: white;
+    background-color: #b3ddf2;
     height: 500px;
     margin: 20px;  
 }
