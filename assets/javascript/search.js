@@ -120,7 +120,7 @@ $('.neigh-list').delegate('.neighborhood', 'click',function(e) {
 
 function search(searchTerm){
   $('#search-container').empty();
-  var val = 'Chicago ' + searchTerm + "tour";
+  var val = 'Chicago ' + searchTerm + "history";
   var request = gapi.client.youtube.search.list({
     q: encodeURIComponent(val).replace(/%20/g, '+'),
     maxResults: maxVids,
