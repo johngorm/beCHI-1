@@ -1,16 +1,16 @@
-# fallacious-paste
-Group Project 1
+# beChi
+Group Project 1 for Northwestern Coding Bootcamp
+
+Project Name: beChi
+Project Members:
+* John Gorman 
+* Anastasia Svigos
+* Marc Deheeger
+* Samantha De Waal Malefyt
+* Corey Schultz
 
 
-Project Name: Fallacious Paste
-	-John Gorman 
-	-Anastasia Svigos
-	-Marc Deheeger
-	-Samantha De Waal Malefyt
-	-Corey Schultz
-
-
-Project Description: Musical tour of Chicago neighborhoods
+Project Description: Connect with the neighborhoods of Chicago
 
 
 Sketch: As a socially-active person in Chicago interested in discovering local music scene, I want an app that will locate venunes and artists so that I can discover new artists and the relevent info of this location
